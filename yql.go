@@ -177,6 +177,9 @@ func Match(rawYQL string, data map[string]interface{}) (bool, error) {
 }
 
 func compare(actualValue interface{}, expectValue []string, op string) bool {
+	if actualValue == nil {
+		return false
+	}
 	if len(expectValue) > 1 {
 		return compareSet(actualValue, expectValue, op)
 	}
